@@ -1,0 +1,122 @@
+html, body, div {
+  margin: 0; padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #0f0f0f;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.board {
+  background: url('../img/background.png');
+  width: 512px;
+  height: 384px;
+  padding: 64px;
+  display: grid;
+  grid-template-columns: repeat(6, 64px);
+  grid-template-rows: repeat(3, 88px);
+}
+
+.card {
+  width: 64px;
+  height: 88px;
+  background: url('../img/card.png');
+}
+
+.card.end {
+  background-position: 64px;
+}
+
+.card.flip {
+  animation: cardFlip 0.5s steps(5) forwards;
+}
+
+.card.reverse-flip {
+  animation: cardFlip 0.5s steps(5) reverse forwards;
+}
+
+.card-selector {
+  width: 64px;
+  height: 88px;
+  cursor: pointer;
+}
+
+.card-selector:hover {
+  background: url('../img/card-selector.png');
+  background-position-x: 0;
+}
+
+.card-face {
+  background: url('../img/card-face.png');
+}
+
+.board.matched {
+  animation: matched 0.25s steps(2) 6;
+}
+
+.board.winner-bg {
+  animation: matched 0.25s steps(2) infinite;
+}
+
+.winner {
+  width: 436px;
+  height: 68px;
+  background: url('../img/you-win.png');
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform-origin: center;
+  transform: translate(-50%, -50%);
+  animation: winDrop 1s linear forwards;
+}
+
+/* I don't know why, but it has to be backwards.
+   /me claims to be master of CSS
+*/
+.card.card-face.card1 { background-position-x: 0; }
+.card.card-face.card2 { background-position-x: 320px; }
+.card.card-face.card3 { background-position-x: 256px; }
+.card.card-face.card4 { background-position-x: 192px; }
+.card.card-face.card5 { background-position-x: 128px; }
+.card.card-face.card6 { background-position-x: 64px; }
+
+@keyframes cardFlip {
+  100% {
+    background-position-x: 320px;
+  }
+}
+
+@keyframes matched {
+  100% {
+    background-position-x: 1024px;
+  }
+}
+
+@keyframes winDrop {
+  0% {
+    top: 0%;
+  }
+  90% {
+    top: 50%;
+  }
+  92%, 96% {
+    top: 51%;
+  }
+  94%, 98% {
+    top: 49%;
+  }
+  100% {
+    top: 50%;
+  }
+}
