@@ -28,6 +28,16 @@ body {
   grid-template-rows: repeat(3, 88px);
 }
 
+
+.board.matched {
+  animation: matched 0.25s steps(2) 6;
+}
+
+.board.winner-bg {
+  animation: matched 0.25s steps(2) infinite;
+}
+
+
 .card {
   width: 64px;
   height: 88px;
@@ -61,14 +71,6 @@ body {
   background: url('../img/card-face.png');
 }
 
-.board.matched {
-  animation: matched 0.25s steps(2) 6;
-}
-
-.board.winner-bg {
-  animation: matched 0.25s steps(2) infinite;
-}
-
 .winner {
   width: 436px;
   height: 68px;
@@ -90,6 +92,9 @@ body {
 .card.card-face.card4 { background-position-x: 192px; }
 .card.card-face.card5 { background-position-x: 128px; }
 .card.card-face.card6 { background-position-x: 64px; }
+
+.g1 { position: relative; animation: g1 0.1s steps(3) infinite; }
+.g2 { filter: invert(1); }
 
 @keyframes cardFlip {
   100% {
@@ -118,5 +123,14 @@ body {
   }
   100% {
     top: 50%;
+  }
+}
+
+@keyframes g1 {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 16px;
   }
 }
